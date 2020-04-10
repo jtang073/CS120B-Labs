@@ -39,100 +39,36 @@ echo Running all tests..."\n\n
 
 # Add tests below
 
-test "PINA: 0x00 => PORTC: 0x04 (0000)"
-setPINA 0x00
+test "(100)PINA: 0x64, (80)PINB: 0x50, (10)PINC: 0x0A => (190)PORTD: 0xBF (101111 11)"
+setPINA 0x64
+setPINB 0x50
+setPINC 0x0A
 continue 5
-expectPORTC 0x04
+expectPORTD 0xBF
 checkResult
 
-test "PINA: 0x01 => PORTC: 0x03 (0001)"
-setPINA 0x01
+test "(79)PINA: 0x4F, (0)PINB: 0x00, (0)PINC: 0x00 => (79)PORTD: 0x4C (010011 00)"
+setPINA 0x4F
+setPINB 0x00
+setPINC 0x00
 continue 5
-expectPORTC 0x03
+expectPORTD 0x4C
 checkResult
 
-test "PINA: 0x02 => PORTC: 0x03 (0010)"
-setPINA 0x02
+test "(100)PINA: 0x64, (60)PINB: 0x3C, (30)PINC: 0x1E => (190)PORTD: 0xBD (101111 01)"
+setPINA 0x64
+setPINB 0x3C
+setPINC 0x1E
 continue 5
-expectPORTC 0x03
+expectPORTD 0xBD
 checkResult
 
-test "PINA: 0x03 => PORTC: 0x02 (0011)"
-setPINA 0x03
+test "(100)PINA: 0x64, (10)PINB: 0x0A, (10)PINC: 0x0A => (120)PORTD: 0x7A (011110 10)"
+setPINA 0x64
+setPINB 0x0A
+setPINC 0x0A
 continue 5
-expectPORTC 0x02
-checkResult
-
-test "PINA: 0x04 => PORTC: 0x03 (0100)"
-setPINA 0x04
-continue 5
-expectPORTC 0x03
-checkResult
-
-test "PINA: 0x05 => PORTC: 0x02 (0101)"
-setPINA 0x05
-continue 5
-expectPORTC 0x02
-checkResult
-
-test "PINA: 0x06 => PORTC: 0x02 (0110)"
-setPINA 0x06
-continue 5
-expectPORTC 0x02
-checkResult
-
-test "PINA: 0x07 => PORTC: 0x01 (0111)"
-setPINA 0x07
-continue 5
-expectPORTC 0x01
-checkResult
-
-test "PINA: 0x08 => PORTC: 0x03 (1000)"
-setPINA 0x08
-continue 5
-expectPORTC 0x03
-checkResult
-
-test "PINA: 0x09 => PORTC: 0x02 (1001)"
-setPINA 0x09
-continue 5
-expectPORTC 0x02
-checkResult
-
-test "PINA: 0x0A => PORTC: 0x02 (1010)"
-setPINA 0x0A
-continue 5
-expectPORTC 0x02
-checkResult
-
-test "PINA: 0x0B => PORTC: 0x01 (1011)"
-setPINA 0x0B
-continue 5
-expectPORTC 0x01
-checkResult
-
-test "PINA: 0x0C => PORTC: 0x02 (1100)"
-setPINA 0x0C
-continue 5
-expectPORTC 0x02
-checkResult
-
-test "PINA: 0x0D => PORTC: 0x01 (1101)"
-setPINA 0x0D
-continue 5
-expectPORTC 0x01
-checkResult
-
-test "PINA: 0x0E => PORTC: 0x01 (1110)"
-setPINA 0x0E
-continue 5
-expectPORTC 0x01
-checkResult
-
-test "PINA: 0x0F => PORTC: 0x00 (1111)"
-setPINA 0x0F
-continue 5
-expectPORTC 0x80
+expectPORTD 0x7A
 checkResult
 
 # Report on how many tests passed/tests ran
