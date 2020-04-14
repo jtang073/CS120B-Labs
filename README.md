@@ -1,16 +1,16 @@
 # CS120B Intro to Embedded Systems (Spring 2020)
-Professor/Author: Philip Brisk
+**Professor/Author:** Philip Brisk
 
-School: University of California, Riverside
+**College:** University of California, Riverside
 
-Name: Jason Tang
+**Name:** Jason Tang
 
-Partner: None
+**Partner:** None
 
-Section: 027
+**Section:** 027
 
 ## Lab 1
-Zybooks reading. (No Lab folder available)
+Zybooks reading. (No lab folder available)
 
 ## Lab 2
 1)	Garage open at night-- A garage door sensor connects to PA0 (1 means door open), and a light sensor connects to PA1 (1 means light is sensed). Write a program that illuminates an LED connected to PB0 (1 means illuminate) if the garage door is open at night.
