@@ -47,11 +47,11 @@ continue 5
 expectPORTB 0x02
 checkResult
 
-test "(69)PIND: 0x22, PINB: 0x01, (SEATBELT DISABLE)PORTB: 0x03"
+test "(69)PIND: 0x22, PINB: 0x01, (SEATBELT DISABLE)PORTB: 0x04"
 setPIND 0x22
 setPINB 0x01
 continue 5
-expectPORTB 0x03
+expectPORTB 0x04
 checkResult
 
 test "(1)PIND: 0x00, PINB: 0x01, (NONE)PORTB: 0x00"

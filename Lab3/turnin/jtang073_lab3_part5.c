@@ -31,7 +31,7 @@ int main(void) {
 		finalB = 0x02;
 	}
 	else if (totalWeight > 0x0005) {
-		finalB = 0x03;
+		finalB = 0x04;
 	}
 	else {
 		finalB = 0x00;
