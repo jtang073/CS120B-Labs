@@ -41,27 +41,11 @@ echo Running all tests..."\n\n
 # Add tests below
 
 test "Test no button press"
+set state = OffRelease
 setPINA 0x00
 continue 5
-expectPORTB 0x01
-
-test "Test one button press"
-setPINA 0x00
-continue 5
-setPINA 0x01
-continue 5
-expectPORTB 0x02
-
-test "Test two button press"
-setPINA 0x00
-continue 5
-setPINA 0x01
-continue 5
-setPINA 0x00
-continue 5
-setPINA 0x01
-continue 5
-expectPORTB 0x02
+expect state OffRelease
+checkResult
 
 # Report on how many tests passed/tests ran
 set $passed=$tests-$failed
