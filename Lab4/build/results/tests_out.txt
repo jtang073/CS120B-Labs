@@ -1,0 +1,16 @@
+Breakpoint 1 at 0x22a: file source/main.c, line 62.
+Note: automatically using hardware breakpoints for read-only addresses.
+======================================================
+Running all tests..."
+
+"Test no button press"...
+	Expected 0x01 
+	PORTB '0x800025:	0x00
+"Test one button press"...
+	Expected 0x02 
+	PORTB '0x800025:	0x00
+"Test two button press"...
+	Expected 0x02 
+	PORTB '0x800025:	0x00
+======================================================
+Quitting: Remote doesn't know how to detach
