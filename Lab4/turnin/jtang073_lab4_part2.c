@@ -12,10 +12,13 @@
 #include "simAVRHeader.h"
 #endif
 
-enum States {Start, Init, Reset, Plus, Minus, PlusOn, MinusOn} state;
+enum States {Start, Begin, Init, Reset, Plus, Minus, PlusOn, MinusOn} state;
 void Tick() {
 	switch(state) {
 		case Start:
+			state = Begin;
+			break;
+		case Begin:
 			state = Init;
 			break;
 		case Init:
@@ -69,6 +72,9 @@ void Tick() {
 		case Start:
 			PORTC = 0x07;
 			break;
+		case Begin:
+			PORTC = 0x07;
+			break;
 		case Init:
 			break;
 		case Plus:
@@ -85,6 +91,9 @@ void Tick() {
                         	PORTC = PORTC - 1;
 			}
                         break;
+		case Reset:
+			PORTC = 0x07;
+			break;
 		default:
 			PORTC = 0x07;
 			break;
