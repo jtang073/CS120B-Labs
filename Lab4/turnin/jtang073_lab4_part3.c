@@ -41,6 +41,9 @@ void Tick() {
 			if ((PINA & 0x07) == 0x02) {
                                 state = UnlockYRelease;
                         }
+			else if (PINA == 0x00) {
+				state = UnlockY;
+			}
                         else {
                                 state = Init;
                         }
