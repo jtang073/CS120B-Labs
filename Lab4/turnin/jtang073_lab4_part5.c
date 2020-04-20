@@ -21,10 +21,7 @@ void Tick() {
 			state = Init;
 			break;
 		case Init:
-			if (index == 0x04) {
-				state = Unlock;
-			}
-			else if ((PINA & 0x87) == array[index]) {
+			if ((PINA & 0x87) == array[index]) {
 				state = Correct;
 			}
 			else if ((PINA & 0x87) == 0x80) {
@@ -38,7 +35,10 @@ void Tick() {
 			}
 			break;
 		case Correct:
-			if ((PINA & 0x07) == 0x00) {
+			if (index == 0x03) {
+				state = Unlock;
+			}
+			else if ((PINA & 0x07) == 0x00) {
                                 ++index;
 				state = Init;
                         }
@@ -52,7 +52,6 @@ void Tick() {
 				state = Init;
 			}
 			else {
-				state = Wrong;
 			}
 			break;
 		case Unlock:
