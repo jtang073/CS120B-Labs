@@ -35,7 +35,10 @@ void Tick() {
 			}
 			break;
 		case Correct:
-			if (index == 0x03) {
+			if ((index == 0x03) && ((PORTB & 0x01) == 0x01)) {
+				state = Locked;
+			}
+			else if (index == 0x03) {
 				state = Unlock;
 			}
 			else if ((PINA & 0x07) == 0x00) {
