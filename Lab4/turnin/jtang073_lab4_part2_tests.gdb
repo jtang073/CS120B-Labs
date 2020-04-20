@@ -60,7 +60,7 @@ test "Test Reset"
 set state = Start
 setPINA 0x03
 continue 5
-expectPORTC 0x07
+expectPORTC 0x00
 expect state Reset
 checkResult
 
