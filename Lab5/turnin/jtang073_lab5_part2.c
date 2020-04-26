@@ -12,10 +12,7 @@
 #include "simAVRHeader.h"
 #endif
 
-unsigned array[8] = {0x00, 0x01, 0x03, 0x07, 0x0F, 0x1F, 0x3F, 0x7F};
-unsigned char i = 0x00;
-unsigned char invert = 0x00;
-enum States {Start, Begin, Init, Reset, ResetOn, Plus, Minus, PlusOn, MinusOn} state;
+enum States {Start, Begin, Init, Reset, Plus, Minus, PlusOn, MinusOn} state;
 void Tick() {
 	switch(state) {
 		case Start:
@@ -25,34 +22,26 @@ void Tick() {
 			state = Init;
 			break;
 		case Init:
-			if ((i > 0x08) || (i < 0x00)) {
-				state = ResetOn;
-			}
+			if ((~PINA & 0x03) == 0x03) {
+                                state = Reset;
+                        }
 			else if ((~PINA & 0x01) == 0x01) {
-				if ((invert & 0x01) == 0x01) {
-                                	state = MinusOn;
-                        	}
-				else {
-					state = PlusOn;
-				}
+				state = PlusOn;
 			}
-			else {
-                        	state = Init;
+			else if ((~PINA & 0x02) == 0x02) {
+                                state = MinusOn;
                         }
 			break;
 		case Reset:
-			if ((~PINA & 0x01) == 0x01) {
+			if ((~PINA & 0x03) == 0x03) {
                                 state = Reset;
                         }
                         else {
-                                state = Begin;
+                                state = Init;
                         }
                         break;
-		case ResetOn:
-			state = Reset;
-			break;
 		case Plus:
-			if ((~PINA & 0x01) == 0x01) {
+			if ((~PINA & 0x03) == 0x01) {
                                 state = Plus;
                         }
                         else {
@@ -64,7 +53,7 @@ void Tick() {
 			break;
 			
 		case Minus:
-                        if ((~PINA & 0x01) == 0x01) {
+                        if ((~PINA & 0x03) == 0x02) {
                                 state = Minus;
                         }
                         else {
@@ -81,10 +70,10 @@ void Tick() {
 	}
 	switch(state) {
 		case Start:
-			PORTC = 0x00;
+			PORTC = 0x07;
 			break;
 		case Begin:
-			PORTC = 0x00;
+			PORTC = 0x07;
 			break;
 		case Init:
 			break;
@@ -93,28 +82,20 @@ void Tick() {
 		case Minus:
 			break;
 		case PlusOn:
-			++i;
-			PORTC = array[i];
+			if (PORTC < 0x09) {
+                        	PORTC = PORTC + 1;
+			}
                         break;
 		case MinusOn:
-			--i;
-			PORTC = array[i];
+			if (PORTC > 0x00) { 
+                        	PORTC = PORTC - 1;
+			}
                         break;
 		case Reset:
-			break;
-		case ResetOn:
 			PORTC = 0x00;
-			if ((invert & 0x01) == 0x01) {
-				invert = 0x00;
-				i = 0x00;
-			}
-			else {
-				invert = 0x01;
-				i = 0x08;
-			}
 			break;
 		default:
-			PORTC = 0x00;
+			PORTC = 0x07;
 			break;
 	}
 }
