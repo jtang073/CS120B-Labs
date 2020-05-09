@@ -3,7 +3,7 @@
  *	Lab Section: 027
  *	Assignment: Lab 6  Exercise 1
  *	Exercise Description: [optional - include for your own benefit]
- *	Demo: https://drive.google.com/drive/folders/1ThnizvWHav8W12-ORTJkbpYy2JYNV61_?usp=sharing
+ *
  *	I acknowledge all content contained herein, excluding template or example
  *	code, is my own original work.
  */
@@ -12,7 +12,7 @@
 #ifdef _SIMULATE_
 #include "simAVRHeader.h"
 #endif
-enum States {Start, Begin, Init, Reset, Plus, Minus, PlusOn, MinusOn} state;
+enum States {Start, Begin, Init, Reset, Plus, Minus, PlusOn, MinusOn, Add, Sub} state;
 unsigned char temp = 0x00;
 volatile unsigned char TimerFlag = 0;
 void TimerISR() { TimerFlag = 1;}
@@ -54,10 +54,10 @@ void Tick() {
                                 state = Reset;
                         }
 			else if ((~PINA & 0x01) == 0x01) {
-				state = PlusOn;
+				state = Add;
 			}
 			else if ((~PINA & 0x02) == 0x02) {
-                                state = MinusOn;
+                                state = Sub;
                         }
 			break;
 		case Reset:
@@ -69,23 +69,35 @@ void Tick() {
 			}
 			break;
 		case Plus:
-			if (temp >= 0x0A) {
+			/*if (temp >= 0x0A) {
 				temp = 0x00;
 				state = PlusOn;
-			}
-			else if ((~PINA & 0x03) == 0x01) {
+			}*/
+			if ((~PINA & 0x03) == 0x01) {
                                 state = Plus;
                         }
                         else {
                                 state = Init;
                         }
                         break;
+		case Add:
+			if (temp >= 0x0A) {
+                                temp = 0x00;
+                        }
+			state = PlusOn;
+			break;
+		case Sub:
+			if (temp >= 0x0A) {
+                                temp = 0x00;
+                        }
+			state = MinusOn;
+			break;
 		case PlusOn:
 			if ((~PINA & 0x03) == 0x01) {
                                 ++temp;
 				state = PlusOn;
 				if (temp >= 0x0A) {
-					state = Plus;
+					state = Add;
 				}
                         }
                         else {
@@ -94,11 +106,7 @@ void Tick() {
 			break;
 
 		case Minus:
-			if (temp >= 0x0A) {
-				temp = 0x00;
-				state = MinusOn;
-			}
-			else if ((~PINA & 0x03) == 0x02) {
+			if ((~PINA & 0x03) == 0x02) {
                                 state = Minus;
                         }
                         else {
@@ -110,7 +118,7 @@ void Tick() {
                                 state = MinusOn;
 				++temp;
 				if (temp >= 0x0A) {
-					state = Minus;
+					state = Sub;
 				}
                         }
                         else {
@@ -137,11 +145,15 @@ void Tick() {
 		case MinusOn:
 			break;
 		case Plus:
+			break;
+		case Minus:
+			break;
+		case Add:
 			if (PORTB < 0x09) {
                         	PORTB = PORTB + 1;
 			}
                         break;
-		case Minus:
+		case Sub:
 			if (PORTB > 0x00) {
                         	PORTB = PORTB - 1;
 			}
