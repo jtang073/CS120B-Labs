@@ -55,7 +55,7 @@ void Tick() {
 				else {state = Restart1;}
 				break;
 		case Restart2:	if ((~PINA & 0x01) == 0x01) {state = Restart2;}
-				else {state = NextLed;}
+				else {state = Init;}
 				break;
 		default:	state = Start; break;
 	}
@@ -81,11 +81,10 @@ void Tick() {
                                         PORTB = PORTB >> 1;
                                 }
 			}
-				break;
-				//PORTB = (PORTB == 0x04) ? 0x01 : PORTB << 1; break;
-		case Pause: break;
-		case Restart1: break;
-		case Restart2: break;
+			break;
+		case Pause: 	break;
+		case Restart1:	break;
+		case Restart2: 	break;
                 default:        break;
 	}
 }
