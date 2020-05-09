@@ -1,0 +1,7 @@
+Breakpoint 1 at 0x452: file source/main.c, line 163.
+Note: automatically using hardware breakpoints for read-only addresses.
+======================================================
+Running all tests..."
+
+"Test add 1"..."Test minus 1"..."Test Reset"...======================================================
+Remote doesn't know how to detach
