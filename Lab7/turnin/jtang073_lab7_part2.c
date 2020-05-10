@@ -3,7 +3,7 @@
  *	Lab Section: 027
  *	Assignment: Lab 6  Exercise 1
  *	Exercise Description: [optional - include for your own benefit]
- *	Demo: https://drive.google.com/drive/folders/1ThnizvWHav8W12-ORTJkbpYy2JYNV61_?usp=sharing
+ *	
  *	I acknowledge all content contained herein, excluding template or example
  *	code, is my own original work.
  */

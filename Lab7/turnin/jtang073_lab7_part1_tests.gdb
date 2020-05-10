@@ -52,37 +52,34 @@ end
 #checkResult
 
 # Add tests below
-test "Inital LED is PB0"
-timeContinue
-expect PORTB 0x01
-checkResult
-
-test "After 1 second PB1"
-timeContinue
-expect PORTB 0x02
-checkResult
-
-test "After 2 seconds PB2"
-timeContinue
-expect PORTB 0x04
-checkResult
-
-test "Press A0 to Pause"
+test "Test add 1"
+set state = Start
+timeContinue 
 setPINA ~0x01
-timeContinue
-expect state Pause
-expect PORTB 0x04
-checkResult
-
-test "Restart game"
+timeContinue 10
 setPINA ~0x00
 timeContinue
-setPINA ~0x01
+expectPORTB 0x08
+expect state Plus
+checkResult
+
+test "Test minus 1"
+set state = Start
 timeContinue
+setPINA ~0x02
+timeContinue 10
 setPINA ~0x00
 timeContinue
-expect state NextLed
-expect PORTB 0x02
+expectPORTB 0x06
+expect state Minus
+checkResult
+
+test "Test Reset"
+set state = Init
+setPINA ~0x03
+timeContinue
+expectPORTB 0x00
+expect state Reset
 checkResult
 
 # Report on how many tests passed/tests ran

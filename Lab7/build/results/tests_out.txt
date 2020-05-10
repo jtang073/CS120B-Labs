@@ -1,0 +1,7 @@
+Breakpoint 1 at 0x4f8: file source/main.c, line 136.
+Note: automatically using hardware breakpoints for read-only addresses.
+======================================================
+Running all tests..."
+
+"Inital LED is PB0"..."After 1 second PB1"..."After 2 seconds PB2"..."Press A0 to Pause"..."Restart game"...======================================================
+Remote doesn't know how to detach
