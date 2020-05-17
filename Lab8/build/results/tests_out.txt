@@ -1,0 +1,8 @@
+Breakpoint 1 at 0x112: file source/main.c, line 29.
+Note: automatically using hardware breakpoints for read-only addresses.
+======================================================
+Running all tests..."
+
+"Inital LED is PB0"...test/tests.gdb:56: Error in sourced command file:
+No symbol "TimerFlag" in current context.
+Remote doesn't know how to detach
