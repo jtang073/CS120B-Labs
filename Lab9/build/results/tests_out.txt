@@ -1,0 +1,11 @@
+Breakpoint 1 at 0x4c8: file source/main.c, line 137.
+Note: automatically using hardware breakpoints for read-only addresses.
+======================================================
+Running all tests..."
+
+"Inital LED is PB0"...
+	Expected 0x01 but got PORTB:64"After 1 second PB1"...
+	Expected 0x02 but got PORTB:64"After 2 seconds PB2"...
+	Expected 0x04 but got PORTB:64"Press A0 to Pause"...test/tests.gdb:73: Error in sourced command file:
+No symbol "Pause" in current context.
+Remote doesn't know how to detach
