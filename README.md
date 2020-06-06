@@ -68,7 +68,18 @@ In a third state machine (CombineLEDsSM), combine both shared variables and outp
 4)	**(Challenge)** Extend the previous exercise to allow a user to adjust the sound frequency up or down using buttons connected to PA0 (up) and PA1 (down). Using our 1 ms timer abstraction, the fastest you'll be able to pulse is 1 ms on and 1 ms off, meaning 500 Hz. Again: Don’t use the PWM for this task.
 
 ## Lab 11
-TBD - May 31, 2020
+1)	Modify the keypad code to be in an SM task. Then, modify the keypad SM to utilize the simple task scheduler format. All code from here on out should use the task scheduler.
+2)	Use the LCD code, along with a button and/or time delay to display the message "CS120B is Legend... wait for it DARY!" The string will not fit on the display all at once, so you will need to come up with some way to paginate or scroll the text.
+Note: If your LCD is exceptionally dim, adjust the resistance provided by the potentiometer connected to Pin #3.
+3)	Combine the functionality of the keypad and LCD so when keypad is pressed and released, the character of the button pressed is displayed on the LCD, and stays displayed until a different button press occurs.
+4)	**(Challenge)** Notice that you can visually see the LCD refresh each character (display a lengthy string then update to a different lengthy string). Design a system where a single character is updated in the displayed string rather than the entire string itself. Use the functions provided in “io.c”.
+5)	**(Challenge)** Using both rows of the LCD display, design a game where a player controlled character avoids oncoming obstacles. Three buttons are used to operate the game. Criteria:
+Use the cursor as the player controlled character.
+- Choose a character like ‘#’, ‘\*’, etc. to represent the obstacles.
+- One button is used to pause/start the game.
+- Two buttons are used to control the player character. One button moves the player to the top row. The other button moves the player to the bottom row.
+- A character position change should happen immediately after pressing the button.
+- Minimum requirement is to have one obstacle on the top row and one obstacle on the bottom row. You may add more if you are feeling up to the challenge.
+- Choose a reasonable movement speed for the obstacles (100ms or more).
+- If an obstacle collides with the player, the game is paused, and a “game over” message is displayed. The game is restarted when the pause button is pressed.
 
-## Lab 12
-TBD - June 7, 2020
