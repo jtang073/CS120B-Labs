@@ -75,11 +75,11 @@ Note: If your LCD is exceptionally dim, adjust the resistance provided by the po
 4)	**(Challenge)** Notice that you can visually see the LCD refresh each character (display a lengthy string then update to a different lengthy string). Design a system where a single character is updated in the displayed string rather than the entire string itself. Use the functions provided in “io.c”.
 5)	**(Challenge)** Using both rows of the LCD display, design a game where a player controlled character avoids oncoming obstacles. Three buttons are used to operate the game. Criteria:
 Use the cursor as the player controlled character.
-- Choose a character like ‘#’, ‘\*’, etc. to represent the obstacles.
-- One button is used to pause/start the game.
-- Two buttons are used to control the player character. One button moves the player to the top row. The other button moves the player to the bottom row.
-- A character position change should happen immediately after pressing the button.
-- Minimum requirement is to have one obstacle on the top row and one obstacle on the bottom row. You may add more if you are feeling up to the challenge.
-- Choose a reasonable movement speed for the obstacles (100ms or more).
-- If an obstacle collides with the player, the game is paused, and a “game over” message is displayed. The game is restarted when the pause button is pressed.
+	- Choose a character like ‘#’, ‘\*’, etc. to represent the obstacles.
+	- One button is used to pause/start the game.
+	- Two buttons are used to control the player character. One button moves the player to the top row. The other button moves the player to the bottom row.
+	- A character position change should happen immediately after pressing the button.
+	- Minimum requirement is to have one obstacle on the top row and one obstacle on the bottom row. You may add more if you are feeling up to the challenge.
+	- Choose a reasonable movement speed for the obstacles (100ms or more).
+	- If an obstacle collides with the player, the game is paused, and a “game over” message is displayed. The game is restarted when the pause button is pressed.
 
